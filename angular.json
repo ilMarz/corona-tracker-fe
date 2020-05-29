@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "corona-tracker-fe"
+    }
+  },
+  "defaultProject": "corona-tracker-fe",
+  "cli": {
+    "analytics": false
+  }
 }
