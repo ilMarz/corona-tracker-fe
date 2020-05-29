@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 15em;
+    justify-content: center;
   }
 .data-value {
     margin: 5px;
@@ -34,4 +35,13 @@
     height: 13rem;
     justify-content: center;
     text-align: center;
+    .checkbox {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.toolbar-radio {
+    justify-content: flex-end;
 }

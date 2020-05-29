@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   worldStats;
   columns: string[] = ['cases', 'todayCases',
   'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'tests', 'confirmed'];
+  orderType = 'az';
 
   constructor(private apiService: ApiService) { }
 
