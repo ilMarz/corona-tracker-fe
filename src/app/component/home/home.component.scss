@@ -1,0 +1,14 @@
+.container {
+    background: lightyellow;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+.data-value {
+    width: fit-content;
+}
+
+.info-card {
+    width: 20%;
+    margin: 1.3rem;
+}

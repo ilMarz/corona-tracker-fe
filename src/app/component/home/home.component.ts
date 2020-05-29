@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
 
   infoData = [];
   worldStats;
+  columns: string[] = ['cases', 'todayCases',
+  'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'tests', 'confirmed'];
 
   constructor(private apiService: ApiService) { }
 
@@ -18,11 +20,21 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.infoData = res.data;
         this.worldStats = res.worldStats;
-        console.log(res);
+
+        console.log(this.infoData);
       },
       (error: any) => {
         console.error('something went wrong');
       }
     );
+  }
+
+  isAllowedColumn(columnName: string): boolean {
+    return this.columns.includes(columnName);
+  }
+
+
+  private _setDataSourceForTable(obj: any) {
+    return new Array(obj);
   }
 }
