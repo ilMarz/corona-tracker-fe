@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  mockEnv: false
+  mockEnv: false,
+  apiBaseUrl: 'https://corona-stats.online'
 };
 
 /*

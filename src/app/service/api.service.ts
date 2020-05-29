@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  apiBaseUrl = 'https://corona-stats.online';
+  apiBaseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
