@@ -1,5 +1,5 @@
 .container {
-    background: lightyellow;
+    background: radial-gradient(circle, black 0%, #011936 100%);
     display: flex;
     flex-wrap: wrap;
     margin-top: 15em;
@@ -16,6 +16,8 @@
 .info-card {
     width: 20%;
     margin: 1.3rem;
+    background-color: #dcdcdc21;
+    color: white;
 }
 
 .info-card-value {
@@ -26,6 +28,7 @@
 
 .data-value-content {
     text-align: center;
+    font-weight: 500;
 }
 
 .toolbar {
@@ -40,8 +43,21 @@
         position: absolute;
         right: 0;
     }
+    background-color: #314152;
 }
 
 .toolbar-radio {
     justify-content: flex-end;
+    mat-radio-button {
+        margin: 10px;
+    }
+    background-color: white;
+}
+
+.mat-card>:first-child, .mat-card-content>:first-child {
+     margin-top: auto; 
+}
+
+.font-color-white {
+    color: white;
 }
