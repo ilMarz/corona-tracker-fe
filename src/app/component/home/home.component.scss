@@ -2,10 +2,14 @@
     background: lightyellow;
     display: flex;
     flex-wrap: wrap;
-    align-content: stretch;
+    margin-top: 15em;
   }
 .data-value {
-    width: fit-content;
+    margin: 5px;
+    flex-grow: 1;
+    mat-card-header {
+        justify-content: center;
+    }
 }
 
 .info-card {
@@ -20,5 +24,14 @@
 }
 
 .data-value-content {
+    text-align: center;
+}
+
+.toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    height: 13rem;
+    justify-content: center;
     text-align: center;
 }
