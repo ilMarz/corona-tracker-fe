@@ -12,3 +12,13 @@
     width: 20%;
     margin: 1.3rem;
 }
+
+.info-card-value {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+}
+
+.data-value-content {
+    text-align: center;
+}

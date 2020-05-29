@@ -4,10 +4,10 @@
 
     <mat-card class="info-card" *ngFor="let info of infoData">
         <mat-card-header>
-            <mat-card-title>{{info.country}} - {{info.countryCode}}</mat-card-title>
+            <mat-card-title>{{info.countryCode}} - {{info.country}} </mat-card-title>
             <mat-card-subtitle>{{info.continent}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content class="info-card-value">
             <ng-container *ngFor="let item of info | keyvalue">
                 <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
                     <mat-card-header>
@@ -15,7 +15,7 @@
                             {{item.key}}
                         </mat-card-subtitle>
                     </mat-card-header>
-                    <mat-card-content>
+                    <mat-card-content class="data-value-content">
                         {{item.value}}
                     </mat-card-content>
                 </mat-card>

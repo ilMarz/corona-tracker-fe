@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,9 @@ getAllData(): Observable<any> {
 
 
 private _getJsonFormatUrl() {
+  if (environment.mockEnv) {
+    return  '../assets/mock/home.json';
+  }
   return this.apiBaseUrl + '?format=json';
 }
 
