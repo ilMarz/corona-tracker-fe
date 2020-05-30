@@ -1,7 +1,8 @@
 <mat-spinner *ngIf="!infoData || infoData.length == 0"></mat-spinner>
 <mat-toolbar class="toolbar">
     <ng-container>
-        <div class="title-world-stats">WORLD STATS</div>
+        <div class="title-world-stats" *ngIf="infoData[0]">WORLD STATS - Last Update: {{infoData[0].updated | date:'medium'}}</div>
+        <div class="title-world-stats" *ngIf="!infoData[0]">WORLD STATS </div>
     </ng-container>
     <ng-container *ngFor="let item of worldStats | keyvalue">
         <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
@@ -61,7 +62,7 @@
             </mat-table-->
         </mat-card-content>
         <mat-card-footer>
-            Last updated: {{info.updated | date}}
+            Last updated: {{info.updated | date:'medium'}}
         </mat-card-footer>
     </mat-card>
 </div>
