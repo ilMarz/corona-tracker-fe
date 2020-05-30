@@ -1,17 +1,18 @@
 <mat-spinner *ngIf="!infoData || infoData.length == 0"></mat-spinner>
 <mat-toolbar class="toolbar">
     <ng-container>
-        <div class="title-world-stats" *ngIf="infoData[0]">WORLD STATS - Last Update: {{infoData[0].updated | date:'medium'}}</div>
-        <div class="title-world-stats" *ngIf="!infoData[0]">WORLD STATS </div>
+        <div class="title-world-stats">WORLD STATS 
+            <ng-container *ngIf="infoData[0]">- Last Update: {{infoData[0].updated | date:'medium'}} </ng-container>
+        </div>
     </ng-container>
     <ng-container *ngFor="let item of worldStats | keyvalue">
         <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
             <mat-card-header>
-                <mat-card-subtitle>
-                    {{item.key}}
-                </mat-card-subtitle>
+                <mat-card-title [ngClass]="getFontColor(item.key)">
+                    {{item.key | uppercase}}
+                </mat-card-title>
             </mat-card-header>
-            <mat-card-content class="data-value-content">
+            <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
                 {{item.value}}
             </mat-card-content>
         </mat-card>
@@ -20,6 +21,7 @@
 </mat-toolbar>
 <mat-toolbar class="toolbar-radio">
     <input matInput placeholder="Search by country..." [(ngModel)]="textSearch">
+     Order by
     <mat-radio-group [(ngModel)]="orderType">
         <mat-radio-button class="example-margin" value="case">Total Cases</mat-radio-button>
         <mat-radio-button class="example-margin" value="death">Total Deaths</mat-radio-button>
@@ -33,17 +35,19 @@
     <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch">
         <mat-card-header>
             <mat-card-title>{{info.countryCode}} - {{info.country}} </mat-card-title>
+            <div class="country-flag"><img src={{getCountryFlag(info.countryCode)}}></div>
+            
             <mat-card-subtitle class="font-color-white">{{info.continent}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="info-card-value">
             <ng-container *ngFor="let item of info | keyvalue">
                 <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
                     <mat-card-header>
-                        <mat-card-title>
+                        <mat-card-title [ngClass]="getFontColor(item.key)">
                             {{item.key | uppercase }}
                         </mat-card-title>
                     </mat-card-header>
-                    <mat-card-content class="data-value-content">
+                    <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
                         {{item.value}}
                     </mat-card-content>
                 </mat-card>
@@ -70,6 +74,15 @@
 
 
 <footer>
+    <div class="info">
+        <span>
+           <b> Datasource: </b> <a href="https://github.com/NovelCOVID/API/"> NovelCOVID API </a> 
+        </span>
+        <span>
+            <b>Repo (API):</b> <a href="https://github.com/sagarkarira/coronavirus-tracker-cli"> Coronavirus Tracker CLI</a> 
+        </span>
+
+    </div>
     <mat-toolbar>
         <div>
             Made in Italy with <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>

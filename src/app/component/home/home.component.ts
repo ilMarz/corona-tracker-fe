@@ -35,6 +35,14 @@ export class HomeComponent implements OnInit {
     return this.columns.includes(columnName);
   }
 
+  getFontColor(key: string) {
+    return key.toLowerCase() + '-font';
+  }
+
+  getCountryFlag(countryCode: string) {
+    return 'https://www.countryflags.io/' + countryCode + '/shiny/24.png';
+  }
+
 
   private _setDataSourceForTable(obj: any) {
     return new Array(obj);

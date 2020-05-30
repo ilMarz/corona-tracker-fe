@@ -100,3 +100,28 @@ footer{
         }
     }
 }
+
+.deaths-font {
+    color: red
+}
+
+.recovered-font {
+    color: green
+}
+
+.critical-font {
+    color: #ff7642;
+}
+
+.confirmed-font {
+    color: #126cb9;
+}
+
+.todaydeaths-font {
+    color: orangered
+}
+
+.country-flag {
+    position: absolute;
+    right: 20px;
+}
