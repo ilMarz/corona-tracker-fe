@@ -205,6 +205,10 @@ footer{
     .world-data-value-card {
         display: inline-block;
     }
+
+    .search {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 775px) {
@@ -217,10 +221,14 @@ footer{
     }
 
     .container {
-        margin-top: 7em;
+        margin-top: 6em;
     }
 
     .world-data-value-card {
         display: inline-block;
+    }
+
+    .search {
+        display: none;
     }
 }
