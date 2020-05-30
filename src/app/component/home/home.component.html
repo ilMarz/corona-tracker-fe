@@ -12,7 +12,7 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                {{item.value}}
+                <b>{{item.value}}</b>
             </mat-card-content>
         </mat-card>
     </ng-container>
@@ -57,7 +57,7 @@
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                        {{item.value}}
+                        <b>{{item.value}}</b>
                     </mat-card-content>
                 </mat-card>
 
