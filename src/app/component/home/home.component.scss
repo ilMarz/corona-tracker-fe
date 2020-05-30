@@ -139,3 +139,12 @@ footer{
     font-style: italic;
     text-align: center;
 }
+
+.search {
+    position: absolute;
+    left: 30px;
+    width: 30%;
+    .search-form-field {
+        width: 100%;
+    }
+}
