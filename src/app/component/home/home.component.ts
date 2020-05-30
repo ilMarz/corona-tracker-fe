@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
   infoData = [];
   worldStats;
   columns: string[] = ['cases', 'todayCases',
-  'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'tests', 'confirmed'];
-  orderType = 'az';
+  'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'critical', 'tests', 'confirmed'];
+  orderType = 'case';
   textSearch;
 
   constructor(private apiService: ApiService) { }
