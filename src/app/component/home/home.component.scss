@@ -168,6 +168,10 @@ footer{
     mat-card-content {
         display: flex;
     }
+
+    a:visited {
+        color: unset;
+    }
 }
 
 .radio-group {

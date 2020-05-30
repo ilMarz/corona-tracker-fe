@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'critical', 'tests', 'confirmed'];
   orderType = 'case';
   textSearch;
-  showLoader = true;
+  showContent = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.infoData = res.data;
         this.worldStats = res.worldStats;
-        this.showLoader = false;
+        this.showContent = true;
 
         console.log(this.infoData);
       },
