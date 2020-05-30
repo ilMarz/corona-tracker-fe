@@ -19,7 +19,7 @@
         </mat-card>
 
         <ng-container *ngFor="let item of worldStats | keyvalue">
-            <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
+            <mat-card class="world-data-value data-value" *ngIf="isAllowedColumn(item.key)">
                 <mat-card-header>
                     <mat-card-title [ngClass]="getFontColor(item.key)">
                         {{item.key | uppercase}}
@@ -51,6 +51,30 @@
 
 
     <div class="container">
+        <mat-card class="info-card world-data-value-card">
+            <mat-card-header>
+                <mat-card-title>{{worldStats.countryCode}} - {{worldStats.country}} </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="info-card-value">
+                <ng-container *ngFor="let item of worldStats | keyvalue">
+                    <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
+                        <mat-card-header>
+                            <mat-card-title [ngClass]="getFontColor(item.key)">
+                                {{item.key | uppercase }}
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
+                            <b>{{item.value}}</b>
+                        </mat-card-content>
+                    </mat-card>
+
+                </ng-container>
+            </mat-card-content>
+            <mat-card-footer class="last-update" *ngIf="infoData[0]">
+                Last updated: {{infoData[0].updated | date:'medium'}}
+            </mat-card-footer>
+        </mat-card>
+        
 
         <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch">
             <mat-card-header>

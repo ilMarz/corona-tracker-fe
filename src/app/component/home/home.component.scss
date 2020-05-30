@@ -2,7 +2,7 @@
     background: radial-gradient(circle, black 0%, #011936 100%);
     display: flex;
     flex-wrap: wrap;
-    margin-top: 19em;
+    margin-top: 15em;
     justify-content: center;
   }
 .data-value {
@@ -42,7 +42,7 @@
     position: fixed;
     top: 0;
     z-index: 1;
-    height: 13rem;
+    height: auto;
     justify-content: center;
     text-align: center;
     .checkbox {
@@ -66,7 +66,7 @@
     background-color: white;
     position: fixed;
     z-index: 1;
-    top: 13rem;
+    top: 9.4rem;
     border-top: 2px solid #030e4d;
     border-bottom: 2px solid #030e4d;
     font-family: Arial, Helvetica, sans-serif;
@@ -179,8 +179,48 @@ footer{
 }
 
 
+.world-data-value-card {
+    display: none;
+}
+
 @media only screen and (max-width: 620px) {
     .container {
       margin-top:23em;
     }
-  }
+}
+
+@media only screen and (max-height: 820px) {
+    .world-data-value {
+        display: none;
+    }
+
+    .toolbar-radio {
+        top:  2rem;
+    }
+
+    .container {
+        margin-top: 7em;
+    }
+
+    .world-data-value-card {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 775px) {
+    .world-data-value {
+        display: none;
+    }
+
+    .toolbar-radio {
+        top:  2rem;
+    }
+
+    .container {
+        margin-top: 7em;
+    }
+
+    .world-data-value-card {
+        display: inline-block;
+    }
+}
