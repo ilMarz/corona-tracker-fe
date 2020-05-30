@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,20 @@ export class ApiService {
 
   apiBaseUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loaderService: LoaderService) { }
 
 
 
   /** GET data from the server */
 getAllData(): Observable<any> {
+  this.loaderService.showLoader();
+
   return this.http.get<any>(this._getJsonFormatUrl())
     .pipe(
-      tap(_ => console.log('fetched data: ', _.data.length)),
+      tap(_ => {
+        console.log('fetched data: ', _.data.length);
+        this.loaderService.hideLoader();
+      }),
       catchError(this.handleError<any>('getAllData', []))
     );
 }
@@ -55,6 +61,7 @@ private _getInfoByCountry(country: string) {
 
 private handleError<T>(operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
+    this.loaderService.hideLoader();
 
     // TODO: send the error to remote logging infrastructure
     console.error(error); // log to console instead
