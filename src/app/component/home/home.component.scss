@@ -51,9 +51,14 @@
         right: 0;
     }
     background-color: #314152;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: auto;
 }
 
 .toolbar-radio {
+    display: flex;
     justify-content: flex-end;
     mat-radio-button {
         margin: 10px;
@@ -66,6 +71,9 @@
     border-bottom: 2px solid #030e4d;
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
 }
 
 .mat-card>:first-child, .mat-card-content>:first-child {
@@ -80,28 +88,21 @@
     color: white;
 }
 
-.title-world-stats {
-    position: absolute;
-    top: 0;
-    left: 23px;
-    color: white;
-}
-
 footer{
     position:fixed;
     bottom:0px;
     height: 2rem;
     width:100%;
-
-    div {
-        font-size: small;
-        top: 0;
-        position: absolute;
-    }
     mat-toolbar {
-        justify-content: flex-end;
+        align-items: baseline;
+        font-size: small;
+        display: flex;
         mat-icon {
             font-size: unset;
+        }
+
+        .made {
+            margin-left: auto;
         }
     }
 }
@@ -141,9 +142,7 @@ footer{
 }
 
 .search {
-    position: absolute;
-    left: 30px;
-    width: 30%;
+    
     .search-form-field {
         width: 100%;
     }
@@ -158,8 +157,26 @@ footer{
 }
 
 .name {
-    position: absolute;
-    top: 0;
-    right: 23px;
-    color: white;
+    margin-left: auto;
 }
+
+.title-card {
+    background: none;
+    color: white;
+    padding: 0;
+    width: 100%;
+    mat-card-content {
+        display: flex;
+    }
+}
+
+.radio-group {
+    margin-left: auto;
+}
+
+
+@media only screen and (max-width: 620px) {
+    .container {
+      margin-top:23em;
+    }
+  }

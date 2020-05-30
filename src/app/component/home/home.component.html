@@ -1,9 +1,20 @@
 <mat-toolbar class="toolbar">
-    <ng-container>
-        <div class="title-world-stats">WORLD STATS
-            <ng-container *ngIf="infoData[0]">- Last Update: {{infoData[0].updated | date:'medium'}} </ng-container>
-        </div>
-    </ng-container>
+    <mat-card class="title-card">
+        <mat-card-content>
+            <ng-container>
+                <div>WORLD STATS
+                    <ng-container *ngIf="infoData[0]">- Last Update: {{infoData[0].updated | date:'medium'}} </ng-container>
+                </div>
+            </ng-container>
+            <ng-container>
+                <div class="name">
+                    COVID19 VIEW
+                </div>
+            </ng-container>
+        </mat-card-content>
+
+    </mat-card>
+    
     <ng-container *ngFor="let item of worldStats | keyvalue">
         <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
             <mat-card-header>
@@ -16,11 +27,6 @@
             </mat-card-content>
         </mat-card>
     </ng-container>
-    <ng-container>
-        <div class="name">
-            COVID19 VIEW
-        </div>
-    </ng-container>
 
 </mat-toolbar>
 <mat-toolbar class="toolbar-radio">
@@ -30,12 +36,14 @@
             <input matInput type="text" [(ngModel)]="textSearch">
         </mat-form-field>
     </div>
-    Order by
-    <mat-radio-group [(ngModel)]="orderType">
-        <mat-radio-button class="radio-button-value" value="case">Total Cases</mat-radio-button>
-        <mat-radio-button class="radio-button-value" value="death">Total Deaths</mat-radio-button>
-        <mat-radio-button class="radio-button-value" value="az">A-Z</mat-radio-button>
-    </mat-radio-group>
+    <div class="radio-group">
+        Order by
+        <mat-radio-group [(ngModel)]="orderType">
+            <mat-radio-button class="radio-button-value" value="case">Total Cases</mat-radio-button>
+            <mat-radio-button class="radio-button-value" value="death">Total Deaths</mat-radio-button>
+            <mat-radio-button class="radio-button-value" value="az">A-Z</mat-radio-button>
+        </mat-radio-group>
+    </div>
 </mat-toolbar>
 
 
@@ -72,18 +80,18 @@
 
 
 <footer>
-    <div class="info">
-        <span>
-            <b> Datasource: </b> <a href="https://github.com/NovelCOVID/API/"> NovelCOVID API </a>
-        </span>
-        <span>
-            <b>Repo (API):</b> <a href="https://github.com/sagarkarira/coronavirus-tracker-cli"> Coronavirus Tracker
-                CLI</a>
-        </span>
-
-    </div>
     <mat-toolbar>
-        <div>
+        <div class="info">
+            <span>
+                <b> Datasource: </b> <a href="https://github.com/NovelCOVID/API/"> NovelCOVID API </a>
+            </span>
+            <span>
+                <b>Repo (API):</b> <a href="https://github.com/sagarkarira/coronavirus-tracker-cli"> Coronavirus Tracker
+                    CLI</a>
+            </span>
+    
+        </div>
+        <div class="made">
             Made in Italy with <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>
         </div>
     </mat-toolbar>
