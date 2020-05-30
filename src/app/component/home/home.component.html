@@ -26,7 +26,7 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                    <b>{{item.value}}</b>
+                    <b>{{item.value | number:'':'it'}}</b>
                 </mat-card-content>
             </mat-card>
         </ng-container>
@@ -63,7 +63,7 @@
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                            <b>{{item.value}}</b>
+                            <b>{{item.value | number:'':'it'}}</b>
                         </mat-card-content>
                     </mat-card>
 
@@ -91,7 +91,7 @@
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                            <b>{{item.value}}</b>
+                            <b>{{item.value | number:'':'it'}}</b>
                         </mat-card-content>
                     </mat-card>
 

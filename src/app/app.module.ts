@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +41,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { InfoPipePipe } from './pipe/info-pipe.pipe';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import localeEn from '@angular/common/locales/it';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEn);
 
 @NgModule({
   declarations: [
@@ -87,7 +90,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'it-IT'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
