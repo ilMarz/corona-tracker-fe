@@ -2,7 +2,7 @@
     background: radial-gradient(circle, black 0%, #011936 100%);
     display: flex;
     flex-wrap: wrap;
-    margin-top: 15em;
+    margin-top: 19em;
     justify-content: center;
   }
 .data-value {
@@ -52,6 +52,11 @@
         margin: 10px;
     }
     background-color: white;
+    position: fixed;
+    z-index: 1;
+    top: 13rem;
+    border-top: 2px solid #030e4d;
+    border-bottom: 2px solid #030e4d;
 }
 
 .mat-card>:first-child, .mat-card-content>:first-child {
@@ -60,4 +65,30 @@
 
 .font-color-white {
     color: white;
+}
+
+.title-world-stats {
+    position: absolute;
+    top: 0;
+    left: 23px;
+    color: white;
+}
+
+footer{
+    position:fixed;
+    bottom:0px;
+    height: 2rem;
+    width:100%;
+
+    div {
+        font-size: small;
+        top: 0;
+        position: absolute;
+    }
+    mat-toolbar {
+        justify-content: flex-end;
+        mat-icon {
+            font-size: unset;
+        }
+    }
 }

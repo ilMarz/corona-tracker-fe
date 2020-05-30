@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   columns: string[] = ['cases', 'todayCases',
   'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'tests', 'confirmed'];
   orderType = 'az';
+  textSearch;
 
   constructor(private apiService: ApiService) { }
 

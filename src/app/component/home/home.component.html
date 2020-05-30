@@ -1,6 +1,8 @@
-
 <mat-spinner *ngIf="!infoData || infoData.length == 0"></mat-spinner>
 <mat-toolbar class="toolbar">
+    <ng-container>
+        <div class="title-world-stats">WORLD STATS</div>
+    </ng-container>
     <ng-container *ngFor="let item of worldStats | keyvalue">
         <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
             <mat-card-header>
@@ -15,17 +17,19 @@
 
     </ng-container>
 </mat-toolbar>
-<div class="container">
-    <mat-toolbar class="toolbar-radio">
-        <mat-radio-group [(ngModel)]="orderType">
-            <mat-radio-button class="example-margin" value="az">A-Z</mat-radio-button>
-            <mat-radio-button class="example-margin" value="case">Total Cases</mat-radio-button>
-            <mat-radio-button class="example-margin" value="death">Total Deaths</mat-radio-button>
-          </mat-radio-group>
-    </mat-toolbar>
-    
+<mat-toolbar class="toolbar-radio">
+    <input matInput placeholder="Search by country..." [(ngModel)]="textSearch">
+    <mat-radio-group [(ngModel)]="orderType">
+        <mat-radio-button class="example-margin" value="az">A-Z</mat-radio-button>
+        <mat-radio-button class="example-margin" value="case">Total Cases</mat-radio-button>
+        <mat-radio-button class="example-margin" value="death">Total Deaths</mat-radio-button>
+    </mat-radio-group>
+</mat-toolbar>
 
-    <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType">
+
+<div class="container">
+
+    <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch">
         <mat-card-header>
             <mat-card-title>{{info.countryCode}} - {{info.country}} </mat-card-title>
             <mat-card-subtitle class="font-color-white">{{info.continent}}</mat-card-subtitle>
@@ -35,7 +39,7 @@
                 <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
                     <mat-card-header>
                         <mat-card-title>
-                            {{item.key}}
+                            {{item.key | uppercase }}
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content class="data-value-content">
@@ -61,3 +65,13 @@
         </mat-card-footer>
     </mat-card>
 </div>
+
+
+
+<footer>
+    <mat-toolbar>
+        <div>
+            Made in Italy with <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>
+        </div>
+    </mat-toolbar>
+</footer>
