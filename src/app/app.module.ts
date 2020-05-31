@@ -43,13 +43,15 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import localeEn from '@angular/common/locales/it';
 import { registerLocaleData } from '@angular/common';
+import { ErrorComponent } from './component/error/error.component';
 registerLocaleData(localeEn);
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    InfoPipePipe
+    InfoPipePipe,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

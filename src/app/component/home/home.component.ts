@@ -65,10 +65,6 @@ export class HomeComponent implements OnInit {
         this._getTotalDataFromWorldMeter();
 
         console.log(this.infoData);
-      },
-      (error: any) => {
-        console.error('something went wrong ', error);
-        this.loaderService.hideLoader();
       }
     );
   }
@@ -81,10 +77,6 @@ export class HomeComponent implements OnInit {
         this.loaderService.hideLoader();
 
         console.log(this.worldStats);
-      },
-      (error: any) => {
-        console.error('something went wrong ', error);
-        this.loaderService.hideLoader();
       }
     );
   }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoaderService } from './loader.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiService {
   getTotalApiBaseUrlWorlMeter = environment.totalWorldMeterApiBaseUrl;
   getAllCountriesApiBaseUrlWorlMeter = environment.allCountriesWorldMeterApiBaseUrl;
 
-  constructor(private http: HttpClient, private loaderService: LoaderService) { }
+  constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router) { }
 
 
 
@@ -94,12 +95,14 @@ private handleError<T>(operation = 'operation', result?: T) {
     this.loaderService.hideLoader();
 
     // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
+    console.error("erroreeeee ", error); // log to console instead
 
     // TODO: better job of transforming error for user consumption
     //this.log(`${operation} failed: ${error.message}`);
 
     // Let the app keep running by returning an empty result.
+    this.loaderService.hideLoader();
+    this.router.navigate(['/error']);
     return of(result as T);
   };
 }
