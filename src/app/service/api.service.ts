@@ -11,6 +11,8 @@ import { LoaderService } from './loader.service';
 export class ApiService {
 
   apiBaseUrl = environment.apiBaseUrl;
+  getTotalApiBaseUrlWorlMeter = environment.totalWorldMeterApiBaseUrl;
+  getAllCountriesApiBaseUrlWorlMeter = environment.allCountriesWorldMeterApiBaseUrl;
 
   constructor(private http: HttpClient, private loaderService: LoaderService) { }
 
@@ -30,14 +32,46 @@ getAllData(): Observable<any> {
     );
 }
 
-  /** GET data from the server */
-  getDataByCountry(country: string): Observable<any> {
-    return this.http.get<any>(this._getInfoByCountry(country))
-      .pipe(
-        tap(_ => console.log('fetched data: ', _.data.length)),
-        catchError(this.handleError<any>('getAllData', []))
-      );
+getAllCountriesDataWorldMeter(): Observable<any> {
+  //this.loaderService.showLoader();
+
+  return this.http.get<any>(this._getAllCountriesApiBaseUrl())
+    .pipe(
+      tap(_ => {
+        console.log('fetched data: ', _.length);
+        //this.loaderService.hideLoader();
+      }),
+      catchError(this.handleError<any>('getAllData', []))
+    );
+}
+
+getTotalDataWorldMeter(): Observable<any> {
+  //this.loaderService.showLoader();
+
+  return this.http.get<any>(this._getTotalApiBaseUrl())
+    .pipe(
+      tap(_ => {
+        console.log('fetched data: ', _.length);
+        //this.loaderService.hideLoader();
+      }),
+      catchError(this.handleError<any>('getAllData', []))
+    );
+}
+
+
+private _getAllCountriesApiBaseUrl(){
+  if (environment.mockEnv) {
+    return  '../assets/mock/worldmeter_all.json';
   }
+  return this.getAllCountriesApiBaseUrlWorlMeter;
+}
+
+private _getTotalApiBaseUrl(){
+  if (environment.mockEnv) {
+    return  '../assets/mock/worldmeter_total.json';
+  }
+  return this.getTotalApiBaseUrlWorlMeter;
+}
 
 
 private _getJsonFormatUrl() {
@@ -45,10 +79,6 @@ private _getJsonFormatUrl() {
     return  '../assets/mock/home.json';
   }
   return this.apiBaseUrl + '?format=json';
-}
-
-private _getInfoByCountry(country: string) {
-  return this.apiBaseUrl + '/' + country + '?format=json';
 }
 
 

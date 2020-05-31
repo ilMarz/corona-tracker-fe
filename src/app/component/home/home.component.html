@@ -26,7 +26,7 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                    <b>{{item.value | number:'':'it'}}</b>
+                    <b>{{item.value ? (item.value | number:'':'it') : 'N/A'}}</b>
                 </mat-card-content>
             </mat-card>
         </ng-container>
@@ -52,7 +52,7 @@
     <div class="container">
         <mat-card class="info-card world-data-value-card">
             <mat-card-header>
-                <mat-card-title>{{worldStats.countryCode}} - {{worldStats.country}} </mat-card-title>
+                <mat-card-title>WORLD </mat-card-title>
             </mat-card-header>
             <mat-card-content class="info-card-value">
                 <ng-container *ngFor="let item of worldStats | keyvalue">
@@ -63,7 +63,7 @@
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                            <b>{{item.value | number:'':'it'}}</b>
+                            <b>{{item.value ? (item.value | number:'':'it') : 'N/A'}}</b>
                         </mat-card-content>
                     </mat-card>
 
@@ -77,8 +77,8 @@
 
         <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch">
             <mat-card-header>
-                <mat-card-title>{{info.countryCode}} - {{info.country}} </mat-card-title>
-                <div class="country-flag"><img src={{getCountryFlag(info.countryCode)}}></div>
+                <mat-card-title>{{info.countryInfo.iso2}} - {{info.country}} </mat-card-title>
+                <div class="country-flag"><img src={{getCountryFlag(info.countryInfo.iso2)}}></div>
 
                 <mat-card-subtitle class="font-color-white">{{info.continent}}</mat-card-subtitle>
             </mat-card-header>
@@ -91,7 +91,7 @@
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                            <b>{{item.value | number:'':'it'}}</b>
+                            <b>{{item.value ? (item.value | number:'':'it') : 'N/A'}}</b>
                         </mat-card-content>
                     </mat-card>
 
@@ -115,10 +115,6 @@
             </div>
             <div class="made">
                 Datasource:
-                <span>
-                    <a href="https://github.com/sagarkarira/coronavirus-tracker-cli">Coronavirus Tracker CLI</a>
-                </span>
-                -->
                 <span>
                     <a href="https://github.com/NovelCOVID/API/">NovelCOVID API</a>
                 </span>
