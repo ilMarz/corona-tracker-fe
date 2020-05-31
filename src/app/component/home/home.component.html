@@ -75,9 +75,9 @@
         </mat-card>
         
 
-        <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch">
+        <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch; index as i">
             <mat-card-header>
-                <mat-card-title>{{info.countryInfo.iso2}} - {{info.country}} </mat-card-title>
+                <mat-card-title>#{{i+1}} {{info.countryInfo.iso2}} - {{info.country}} </mat-card-title>
                 <div class="country-flag"><img src={{getCountryFlag(info.countryInfo.iso2)}}></div>
 
                 <mat-card-subtitle class="font-color-white">{{info.continent}}</mat-card-subtitle>
