@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this._getAllCountriesDataFromWorldMeter();
-    this._getTotalDataFromWorldMeter();
+    //this._getTotalDataFromWorldMeter();
   }
 
   isAllowedColumn(columnName: string): boolean {
@@ -62,13 +62,13 @@ export class HomeComponent implements OnInit {
     this.apiService.getAllCountriesDataWorldMeter().subscribe(
       (res: any) => {
         this.infoData = res;
-        this.showContent = this.infoData.length > 0;
-        this.loaderService.hideLoader();
+        this._getTotalDataFromWorldMeter();
 
         console.log(this.infoData);
       },
       (error: any) => {
         console.error('something went wrong ', error);
+        this.loaderService.hideLoader();
       }
     );
   }
@@ -77,11 +77,14 @@ export class HomeComponent implements OnInit {
     this.apiService.getTotalDataWorldMeter().subscribe(
       (res: any) => {
         this.worldStats = res;
+        this.showContent = this.infoData.length > 0;
+        this.loaderService.hideLoader();
 
         console.log(this.worldStats);
       },
       (error: any) => {
         console.error('something went wrong ', error);
+        this.loaderService.hideLoader();
       }
     );
   }
