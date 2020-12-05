@@ -49,9 +49,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     InfoPipePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], {
+    initialNavigation: 'enabled'
+}),
     HttpClientModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
