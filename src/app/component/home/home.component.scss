@@ -18,6 +18,10 @@
     width: 4rem;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    .data-value-label {
+        white-space: nowrap
+    }
 }
 
 .info-card {
@@ -74,7 +78,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: auto;
-}
+    }
 
 .mat-card>:first-child, .mat-card-content>:first-child {
      margin-top: auto; 
@@ -156,8 +160,12 @@ footer{
     background-color: #3f51b5;
 }
 
-.name {
+.info-container {
     margin-left: auto;
+    display: flex;
+    span.name {
+        margin-right: 1rem;
+    }
 }
 
 .title-card {

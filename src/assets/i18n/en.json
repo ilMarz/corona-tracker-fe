@@ -1,0 +1,17 @@
+{
+    "worldStats": "world stats",
+    "totalCases": "Total Cases",
+    "totalDeaths": "Total Deaths",
+    "active": "active",
+    "cases": "cases",
+    "critical": "critical",
+    "deaths": "deaths",
+    "recovered": "recovered",
+    "tests": "tests",
+    "todayCases": "today cases",
+    "todayDeaths": "today deaths",
+    "search": "search by country",
+    "lastUpdate": "Last Update",
+    "made": "Made in Italy with",
+    "datasource": "datasource"
+}

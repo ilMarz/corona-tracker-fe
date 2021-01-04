@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './service/loader.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { LoaderService } from './service/loader.service';
 })
 export class AppComponent implements OnInit  {
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private loaderService: LoaderService, public translate: TranslateService) { 
+    translate.addLangs(['en', 'it']);
+    translate.setDefaultLang('en');
+  }
 
   title = 'corona-tracker-fe';
   showLoader = true;

@@ -44,6 +44,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import localeEn from '@angular/common/locales/it';
 import { registerLocaleData } from '@angular/common';
 import { ErrorComponent } from './component/error/error.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient} from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 registerLocaleData(localeEn);
 
 @NgModule({
@@ -90,9 +93,20 @@ registerLocaleData(localeEn);
     MatSortModule,
     MatPaginatorModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'it-IT'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

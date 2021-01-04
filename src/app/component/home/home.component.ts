@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { LoaderService } from 'src/app/service/loader.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,9 @@ export class HomeComponent implements OnInit {
   textSearch;
   showContent = false;
 
-  constructor(private apiService: ApiService, private loaderService: LoaderService) { }
+  constructor(private apiService: ApiService, private loaderService: LoaderService, public translate: TranslateService) {
+    this.translate.currentLang = this.translate.getDefaultLang();
+   }
 
   ngOnInit(): void {
     this._getAllCountriesDataFromWorldMeter();
@@ -40,6 +43,15 @@ export class HomeComponent implements OnInit {
 
   getCountryFlag(iso2: string) {
     return 'https://www.countryflags.io/' + iso2 + '/shiny/24.png';
+  }
+
+  getLanguageFlag(currentLang: string) {
+    return "/assets/i18n/img/"+currentLang+".png";
+  }
+
+  
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   private _getAllDataFromTrackerCli(){

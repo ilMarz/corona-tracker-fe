@@ -4,14 +4,27 @@
         <mat-card class="title-card">
             <mat-card-content>
                 <ng-container>
-                    <div>WORLD STATS
-                        <ng-container *ngIf="infoData[0]">- Last Update: {{worldStats.updated | date:'medium'}}
+                    <div>{{'worldStats' | translate | uppercase }}
+                        <ng-container *ngIf="infoData[0]">- {{'lastUpdate' | translate }}: {{worldStats.updated | date:'medium'}}
                         </ng-container>
                     </div>
                 </ng-container>
                 <ng-container>
-                    <div class="name">
-                        COVID19 VIEW
+                    <div class="info-container">
+                          <span class="name">COVID19 VIEW</span>
+                          <img [src]="getLanguageFlag(translate.currentLang)" alt="image">
+                          <span class="form-inline">
+                              <select 
+                                  class="form-control" 
+                                  #selectedLang 
+                                  (change)="switchLang(selectedLang.value)">
+                                <option *ngFor="let language of translate.getLangs()" 
+                                  [value]="language"
+                                  [selected]="language === translate.currentLang">
+                                  {{ language }}
+                                </option>
+                              </select>
+                            </span>
                     </div>
                 </ng-container>
             </mat-card-content>
@@ -22,7 +35,7 @@
             <mat-card class="world-data-value data-value" *ngIf="isAllowedColumn(item.key)">
                 <mat-card-header>
                     <mat-card-title [ngClass]="getFontColor(item.key)">
-                        {{item.key | uppercase}}
+                        {{item.key | translate | uppercase}}
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
@@ -35,7 +48,7 @@
     <mat-toolbar class="toolbar-radio">
         <div class="search">
             <mat-form-field class="search-form-field">
-                <mat-label>Search by country</mat-label>
+                <mat-label>{{'search' | translate }}</mat-label>
                 <input matInput type="text" [(ngModel)]="textSearch">
             </mat-form-field>
         </div>
@@ -59,7 +72,7 @@
                     <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
                         <mat-card-header>
                             <mat-card-title [ngClass]="getFontColor(item.key)">
-                                {{item.key | uppercase }}
+                                {{item.key | translate | uppercase }}
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
@@ -70,7 +83,7 @@
                 </ng-container>
             </mat-card-content>
             <mat-card-footer class="last-update" *ngIf="infoData[0]">
-                Last updated: {{infoData[0].updated | date:'medium'}}
+                {{'lastUpdate' | translate }}: {{infoData[0].updated | date:'medium'}}
             </mat-card-footer>
         </mat-card>
         
@@ -87,7 +100,7 @@
                     <mat-card class="data-value" *ngIf="isAllowedColumn(item.key)">
                         <mat-card-header>
                             <mat-card-title [ngClass]="getFontColor(item.key)">
-                                {{item.key | uppercase }}
+                                <div class="data-value-label">{{item.key | translate | uppercase }}</div>
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
@@ -98,7 +111,7 @@
                 </ng-container>
             </mat-card-content>
             <mat-card-footer class="last-update">
-                Last updated: {{info.updated | date:'medium'}}
+                {{'lastUpdate' | translate }}: {{info.updated | date:'medium'}}
             </mat-card-footer>
         </mat-card>
     </div>
@@ -108,13 +121,13 @@
     <footer>
         <mat-toolbar>
             <div class="info">
-                Made in Italy with <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>
+                {{'made' | translate }} <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>
                 <span>
                     <a href="https://github.com/ilMarz">Author</a>
                 </span>
             </div>
             <div class="made">
-                Datasource:
+                {{'datasource' | translate }}:
                 <span>
                     <a href="https://github.com/NovelCOVID/API/">NovelCOVID API</a>
                 </span>

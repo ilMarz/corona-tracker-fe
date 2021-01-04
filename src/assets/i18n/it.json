@@ -1,0 +1,17 @@
+{
+    "worldStats": "Dati dal Mondo",
+    "totalCases": "Casi",
+    "totalDeaths": "Decessi",
+    "active": "positivi",
+    "cases": "casi",
+    "critical": "critici",
+    "deaths": "decessi",
+    "recovered": "guariti",
+    "tests": "testati",
+    "todayCases": "casi oggi",
+    "todayDeaths": "decessi oggi",
+    "search": "cerca nazione...",
+    "lastUpdate": "ultimo aggiornamento",
+    "made": "Creato in Italia con",
+    "datasource": "fonti"
+}
