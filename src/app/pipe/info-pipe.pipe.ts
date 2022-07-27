@@ -10,7 +10,7 @@ export class InfoPipePipe implements PipeTransform {
     if (args[0]) {
       const orderType = args[0];
       if (orderType === 'az'){
-        return value.sort((a, b) => a.countryCode.localeCompare(b.countryCode));
+        return value.sort((a, b) => a.country.localeCompare(b.country));
       }
       if (orderType === 'case'){
         return value.sort((a, b) => a.cases > b.cases ? -1 : 1);
