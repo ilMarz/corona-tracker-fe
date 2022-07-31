@@ -46,13 +46,16 @@
 
     </mat-toolbar>
     <mat-toolbar class="toolbar-radio">
-        <div class="search">
+        <div class="left-group">
+            <a href="/feed"> news </a>
+        </div>
+        <div class="center-group">
             <mat-form-field class="search-form-field">
                 <mat-label>{{'search' | translate }}</mat-label>
                 <input matInput type="text" [(ngModel)]="textSearch">
             </mat-form-field>
         </div>
-        <div class="radio-group">
+        <div class="right-group">
             <mat-radio-group [(ngModel)]="orderType">
                 <mat-radio-button class="radio-button-value" value="case">{{'totalCases' | translate }}</mat-radio-button>
                 <mat-radio-button class="radio-button-value" value="death">{{'totalDeaths' | translate }}</mat-radio-button>
@@ -62,7 +65,7 @@
     </mat-toolbar>
 
 
-    <div class="container">
+    <div class="container container-margin-top">
         <mat-card class="info-card world-data-value-card">
             <mat-card-header>
                 <mat-card-title>WORLD </mat-card-title>
@@ -115,27 +118,4 @@
             </mat-card-footer>
         </mat-card>
     </div>
-
-
-
-    <footer>
-        <mat-toolbar>
-            <div class="info">
-                {{'made' | translate }} <mat-icon aria-hidden="false" aria-label="heart">favorite</mat-icon>
-                <span>
-                    <a href="https://github.com/ilMarz">Author</a>
-                </span>
-            </div>
-            <div class="made">
-                {{'datasource' | translate }}:
-                <span>
-                    <a href="https://github.com/NovelCOVID/API/">NovelCOVID API</a>
-                </span>
-                -->
-                <span>
-                    <a href="https://www.worldometers.info/">Worldometers</a>
-                </span>
-            </div>
-        </mat-toolbar>
-    </footer>
 </ng-container>

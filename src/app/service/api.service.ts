@@ -5,6 +5,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoaderService } from './loader.service';
 import { Router } from '@angular/router';
+import { NewsApiService } from 'angular-news-api';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,10 @@ export class ApiService {
   apiBaseUrl = environment.apiBaseUrl;
   getTotalApiBaseUrlWorlMeter = environment.totalWorldMeterApiBaseUrl;
   getAllCountriesApiBaseUrlWorlMeter = environment.allCountriesWorldMeterApiBaseUrl;
+  googleUrl = environment.news.google;
+  mediaStackUrl = environment.news.mediastack;
 
-  constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router) { }
+  constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router, private newsApiService: NewsApiService) { }
 
 
 
@@ -59,6 +63,29 @@ getTotalDataWorldMeter(): Observable<any> {
     );
 }
 
+getNewsData(): Observable<any> {
+  return this.newsApiService.everything({
+    q: 'trump'
+})}
+
+getNewsDataGoogle(): Observable<any> {
+  return this.http.get<any>(this._getGoogleNewsUrl())
+    .pipe(
+      tap(_ => {
+        console.log('getNewsDataGoogle data: ', _.length);
+      }),
+      catchError(this.handleError<any>('getNewsData', []))
+    );
+}
+
+getMediaStackNews(): Observable<any> {
+  return this.http.get<any>(this._getMediaStackUrl())
+    .pipe(
+      tap(),
+      catchError(this.handleError<any>('getNewsData', []))
+    );
+}
+
 
 private _getAllCountriesApiBaseUrl(){
   if (environment.mockEnv) {
@@ -83,12 +110,20 @@ private _getJsonFormatUrl() {
 }
 
 
+private _getGoogleNewsUrl(){
+  if (environment.mockEnv) {
+    return  '../assets/mock/news.xml';
+  }
+  return this.googleUrl;
+}
 
 
-
-
-
-
+private _getMediaStackUrl(){
+  if (environment.mockEnv) {
+    return  '../assets/mock/mediastack.json';
+  }
+  return this.mediaStackUrl;
+}
 
 private handleError<T>(operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {

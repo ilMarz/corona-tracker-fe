@@ -1,0 +1,15 @@
+.container-flex {
+    display: flex;
+}
+
+.left-news {
+    flex: 70%;
+}
+
+.right-news {
+    flex: 30%;
+}
+
+.news-content {
+    padding: 5%;
+}

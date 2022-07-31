@@ -7,7 +7,17 @@ export const environment = {
   mockEnv: false,
   apiBaseUrl: 'https://corona-stats.online',
   totalWorldMeterApiBaseUrl: 'https://disease.sh/v2/all?allowNull=true',
-  allCountriesWorldMeterApiBaseUrl: 'https://disease.sh/v2/countries?allowNull=true'
+  allCountriesWorldMeterApiBaseUrl: 'https://disease.sh/v2/countries?allowNull=true',
+  news: {
+    //google: 'https://news.google.com/rss/topics/CAAqBwgKMJy5lwswj-KuAw?hl=en-US&gl=US&ceid=US:en'
+    //google: 'https://news.google.com/rss/search?q=apple&hl=en-US&gl=US&ceid=US:en',
+    newsapi:'https://newsapi.org/v2',
+    google:'https://news.google.com/rss/topics/CAAqBwgKMJy5lwswj-KuAw?hl=en-US&gl=US&ceid=US:en',
+    mediastack: 'http://api.mediastack.com/v1/news?access_key=0f20e3cc6b65d81821a9be7a56a34db5&keywords=covid19&languages=it&country=it&limit=100',
+    key: {
+      newsapi: "9f4dba32ffb64aa194150e5a11d3fc48"
+    }
+  }
 
 };
 

@@ -12,3 +12,22 @@
     }
     text-align: -webkit-center;
 }
+
+footer{
+    position:fixed;
+    bottom:0px;
+    height: 2rem;
+    width:100%;
+    mat-toolbar {
+        align-items: baseline;
+        font-size: small;
+        display: flex;
+        mat-icon {
+            font-size: unset;
+        }
+
+        .made {
+            margin-left: auto;
+        }
+    }
+}

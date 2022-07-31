@@ -2,3 +2,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.container {
+    background: radial-gradient(circle, black 0%, #011936 100%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+}
+
+.container-margin-top {
+    
+    margin-top: 15em;
+}
+
