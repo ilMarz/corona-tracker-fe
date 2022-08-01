@@ -17,7 +17,9 @@ export class TravelfeedComponent implements OnInit {
   constructor(private loaderService: LoaderService, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this._getFromLSOrExecuteRequest();
+    //this._getFromLSOrExecuteRequest();
+    this._getYahooNewsData("covid19");
+    this._getGoogleNewsData("covid19", "it");
   }
 
 
@@ -29,6 +31,32 @@ export class TravelfeedComponent implements OnInit {
         localStorage.setItem("dataNews", JSON.stringify(res))
         this.lastDataRetrieve = formatDate(new Date(), 'dd/MM/y-HH:m:s', 'en');
         localStorage.setItem("lastDataRetrieve", this.lastDataRetrieve)
+        this.dataNews = res;
+        this.loaderService.hideLoader();
+      }
+    );
+  }
+
+  private _getGoogleNewsData(input, lang) {
+    this.loaderService.showLoader();
+    this.apiService.getNewsDataGoogle(input, lang).subscribe(
+      (res: any) => {
+        this.lastDataRetrieve = formatDate(new Date(), 'dd/MM/y-HH:m:s', 'en');
+        console.log("google response")
+        console.log(res)
+        this.dataNews = res;
+        this.loaderService.hideLoader();
+      }
+    );
+  }
+
+  private _getYahooNewsData(input) {
+    this.loaderService.showLoader();
+    this.apiService.getYahooNews(input).subscribe(
+      (res: any) => {
+        this.lastDataRetrieve = formatDate(new Date(), 'dd/MM/y-HH:m:s', 'en');
+        console.log("yahoo response")
+        console.log(res)
         this.dataNews = res;
         this.loaderService.hideLoader();
       }
