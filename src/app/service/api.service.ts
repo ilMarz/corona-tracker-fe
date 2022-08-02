@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoaderService } from './loader.service';
 import { Router } from '@angular/router';
 import { NewsApiService } from 'angular-news-api';
+import { Parser } from 'xml2js';
 
+declare const require;
+const xml2js = require('xml2js');
 
 @Injectable({
   providedIn: 'root'
@@ -73,11 +76,11 @@ getNewsData(): Observable<any> {
 })}
 
 getNewsDataGoogle(input, lang): Observable<any> {
-  return this.http.get<any>(this._getGoogleNewsUrl(input, lang))
+  return this.http.get(this._getGoogleNewsUrl(input, lang), { responseType: 'text' })
     .pipe(
-      tap(_ => {
-        console.log('getNewsDataGoogle data: ', _.length);
-      }),
+      switchMap(async result => 
+        await this._parseXmlToJson(result)
+      ),
       catchError(this.handleError<any>('getNewsData', []))
     );
 }
@@ -157,6 +160,12 @@ private _getYahooUrl(input){
   }
   input = input ? input : "world"
   return this.yahooUrl.replace(this.keySearch, input);
+}
+
+async _parseXmlToJson(xml) {
+  return await xml2js
+    .parseStringPromise(xml, { explicitArray: false })
+    .then(response => response.rss.channel.item);
 }
 
 private handleError<T>(operation = 'operation', result?: T) {

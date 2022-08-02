@@ -51,6 +51,7 @@ import { TravelfeedComponent } from './component/travelfeed/travelfeed.component
 import { NgnewsModule } from 'angular-news-api';
 import { NewsApiKeyConfig } from 'angular-news-api';
 import { environment } from 'src/environments/environment';
+import { SanitizeHtmlPipe } from './pipe/sanitize-html.pipe';
  
 const newsApiConfig: NewsApiKeyConfig = {
   key: environment.news.key.newsapi
@@ -64,7 +65,8 @@ registerLocaleData(localeEn);
     HomeComponent,
     InfoPipePipe,
     ErrorComponent,
-    TravelfeedComponent
+    TravelfeedComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
