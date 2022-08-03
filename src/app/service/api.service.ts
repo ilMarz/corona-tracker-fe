@@ -5,8 +5,6 @@ import { catchError, map, tap, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoaderService } from './loader.service';
 import { Router } from '@angular/router';
-import { NewsApiService } from 'angular-news-api';
-import { Parser } from 'xml2js';
 
 declare const require;
 const xml2js = require('xml2js');
@@ -23,10 +21,9 @@ export class ApiService {
   getTotalApiBaseUrlWorlMeter = environment.totalWorldMeterApiBaseUrl;
   getAllCountriesApiBaseUrlWorlMeter = environment.allCountriesWorldMeterApiBaseUrl;
   googleUrl = environment.news.google;
-  mediaStackUrl = environment.news.mediastack;
   yahooUrl = environment.news.yahoo;
 
-  constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router, private newsApiService: NewsApiService) { }
+  constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router) { }
 
 
 
@@ -70,46 +67,23 @@ getTotalDataWorldMeter(): Observable<any> {
     );
 }
 
-getNewsData(): Observable<any> {
-  return this.newsApiService.everything({
-    q: 'trump'
-})}
-
 getNewsDataGoogle(input, lang): Observable<any> {
   return this.http.get(this._getGoogleNewsUrl(input, lang), { responseType: 'text' })
     .pipe(
       switchMap(async result => 
         await this._parseXmlToJson(result)
       ),
-      catchError(this.handleError<any>('getNewsData', []))
-    );
-}
-
-getMediaStackNews(): Observable<any> {
-  return this.http.get<any>(this._getMediaStackUrl())
-    .pipe(
-      tap(),
-      catchError(this.handleError<any>('getNewsData', []))
+      catchError(this.handleError<any>('getNewsDataGoogle', []))
     );
 }
 
 getYahooNews(input): Observable<any> {
-  return this.http.get<any>(this._getYahooUrl(input))
+  return this.http.get(this._getYahooUrl(input), { responseType: 'text' })
     .pipe(
-      tap(),
+      switchMap(async result => 
+        await this._parseXmlToJson(result)
+      ),
       catchError(this.handleError<any>('getYahooNews', []))
-    );
-}
-
-getNewsDataViaReqbin(): Observable<any> {
-
-
-  return this.http.post<any>("https://apius.reqbin.com/api/v1/requests", {"id":"0","name":"","errors":"","json":"{\"method\":\"GET\",\"url\":\"https://www.toptal.com/developers/feed2json/convert?url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3Dapple%26hl%3Den-US%26gl%3DUS%26ceid%3DUS%3Aen\",\"apiNode\":\"US\",\"contentType\":\"\",\"content\":\"\",\"headers\":\"\",\"errors\":\"\",\"curlCmd\":\"\",\"codeCmd\":\"\",\"jsonCmd\":\"\",\"xmlCmd\":\"\",\"lang\":\"\",\"auth\":{\"auth\":\"noAuth\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"customHeader\":\"\",\"encrypted\":\"\"},\"compare\":false,\"idnUrl\":\"https://www.toptal.com/developers/feed2json/convert?url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3Dapple%26hl%3Den-US%26gl%3DUS%26ceid%3DUS%3Aen\"}","sessionId":1659386911139,"deviceId":"81771e5d-b376-4593-9cde-d727dd4adb90R"})
-    .pipe(
-      tap(_ => {
-        console.log('getNewsDataViaReqbin data: ', _.length);
-      }),
-      catchError(this.handleError<any>('getNewsData', []))
     );
 }
 
@@ -144,14 +118,6 @@ private _getGoogleNewsUrl(input, lang){
   input = input ? input : "world"
   lang = lang ? lang : "us";
   return this.googleUrl.replace(this.keySearch, input).replace(this.keyLang, lang);
-}
-
-
-private _getMediaStackUrl(){
-  if (environment.mockEnv) {
-    return  '../assets/mock/mediastack.json';
-  }
-  return this.mediaStackUrl;
 }
 
 private _getYahooUrl(input){

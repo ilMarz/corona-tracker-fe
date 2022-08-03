@@ -13,5 +13,10 @@
     "search": "cerca nazione...",
     "lastUpdate": "ultimo aggiornamento",
     "made": "Creato in Italia con",
-    "datasource": "fonti"
+    "datasource": "fonti",
+    "feed": {
+        "search": "cerca",
+        "lastDataRetrieve": "ultimo aggiornamento",
+        "country": "Paese"
+    }
 }

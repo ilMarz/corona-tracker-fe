@@ -13,5 +13,10 @@
     "search": "search by country",
     "lastUpdate": "Last Update",
     "made": "Made in Italy with",
-    "datasource": "datasource"
+    "datasource": "datasource",
+    "feed": {
+        "search": "search",
+        "lastDataRetrieve": "last update",
+        "country": "Country"
+    }
 }

@@ -3,22 +3,29 @@
     <mat-toolbar class="toolbar">
         <span>News</span>
     </mat-toolbar>
-    <a href="/home"> home </a>
+    <div>
+        <a href="/home"> home </a>
+        <span class="lastDataRetrieve">{{'feed.lastDataRetrieve' | translate}}: {{lastDataRetrieve}}</span>
+    </div>
     <div class="container container-flex">
         <div class="left-news">
             <div class="news-content">
+                <mat-form-field class="search-form-field" appearance="fill">
+                    <mat-label>Search...</mat-label>
+                    <input matInput type="text" [(ngModel)]="newsSearchInput">
+                </mat-form-field>
                 <ng-container *ngFor="let data of dataNews">                
                     <mat-expansion-panel hideToggle>
                         <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{data.title}}
+                            <div>{{data.title}}</div>
                         </mat-panel-title>
                         <mat-panel-description>
-                            <p>{{data.source.$.url}}</p>
-                            <p>{{data.pubDate | date:'medium'}}</p>
+                            <p class="news-date"> <mat-icon>date_range</mat-icon>{{data.pubDate | date:'longDate'}} - {{data.pubDate | date:'shortTime'}}</p>
                         </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <p>{{data.description}}</p>
+                        <a href="{{data.link}}" target="_blank">{{data.link}}</a>
+                        <p class="news-author"><mat-icon>person</mat-icon>{{data.source.$.url}}</p>
                     </mat-expansion-panel>
                 </ng-container>
             </div>
@@ -28,13 +35,19 @@
             <div class="news-content">
                 <mat-card class="info-card world-data-value-card">
                     <mat-card-header>
-                        <mat-card-title>prova card </mat-card-title>
+                        <mat-card-title>{{'feed.search' | translate}}</mat-card-title>
                     </mat-card-header>
+                    {{'feed.country' | translate}}
                     <mat-card-content class="info-card-value">
-                        prova content card
+                        <mat-form-field appearance="fill">
+                            <mat-select matNativeControl [(ngModel)]="selectedNewsLang" name="car" (selectionChange)="doSomething($event)" placeholder="en">
+                                <mat-option *ngFor="let lang of newsLang" [value]="lang.value">
+                                {{lang.key}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </mat-card-content>
-                    <mat-card-footer class="last-update">
-                        footer card
+                    <mat-card-footer>
                     </mat-card-footer>
                 </mat-card>
             </div>

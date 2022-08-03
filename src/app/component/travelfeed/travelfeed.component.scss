@@ -3,13 +3,35 @@
 }
 
 .left-news {
-    flex: 70%;
+    flex: 80%;
 }
 
 .right-news {
-    flex: 30%;
+    flex: 20%;
 }
 
 .news-content {
     padding: 5%;
+    mat-expansion-panel {
+        margin: 2%;
+    }
+}
+
+.news-date {
+    width: 100%;
+    text-align: end;
+}
+
+.lastDataRetrieve {
+    float: right;
+}
+
+.news-author{
+    font-style: italic;
+    text-align: right;
+}
+
+.search-form-field {
+    background: white;
+    width: 100%;
 }
