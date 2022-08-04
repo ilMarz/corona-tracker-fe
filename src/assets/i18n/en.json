@@ -17,6 +17,7 @@
     "feed": {
         "search": "search",
         "lastDataRetrieve": "last update",
-        "country": "Country"
+        "country": "Country",
+        "open": "Go to News:"
     }
 }

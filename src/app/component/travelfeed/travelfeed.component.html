@@ -1,37 +1,57 @@
 
  <ng-container *ngIf="showContent">
-    <mat-toolbar class="toolbar">
+    <mat-toolbar class="toolbar news-toolbar">
         <span>News</span>
     </mat-toolbar>
-    <div>
-        <a href="/home"> home </a>
-        <span class="lastDataRetrieve">{{'feed.lastDataRetrieve' | translate}}: {{lastDataRetrieve}}</span>
-    </div>
+    <mat-toolbar class="toolbar-radio news-toolbar-radio">
+        <div class="toolbar-radio-news-content">
+            <div>
+                <mat-icon>home</mat-icon> <a href="/home"> stats </a>
+            </div>
+            <div class="search-select">
+                <mat-select matNativeControl [(ngModel)]="selectedNewsLang" name="car" (selectionChange)="doSomething($event)" placeholder="en">
+                    <mat-option *ngFor="let lang of newsLang" [value]="lang.value">
+                    {{lang.key}}
+                    </mat-option>
+                </mat-select>  
+            </div>
+            <div>
+                <span class="lastDataRetrieve">{{'feed.lastDataRetrieve' | translate}}: {{lastDataRetrieve}}</span>
+            </div>
+        </div>
+    </mat-toolbar>
     <div class="container container-flex">
         <div class="left-news">
             <div class="news-content">
-                <mat-form-field class="search-form-field" appearance="fill">
-                    <mat-label>Search...</mat-label>
-                    <input matInput type="text" [(ngModel)]="newsSearchInput">
-                </mat-form-field>
-                <ng-container *ngFor="let data of dataNews">                
-                    <mat-expansion-panel hideToggle>
+                    <div class="search-container">
+                        <div class="search-text">
+                            <mat-form-field class="search-form-field">
+                                <mat-label>Search...</mat-label>
+                                <input matInput type="text" [(ngModel)]="newsSearchInput">                      
+                            </mat-form-field>
+                        </div>
+                    </div>
+                <ng-container *ngFor="let data of dataNews | filter:newsSearchInput">                
+                    <mat-expansion-panel expanded="true">
                         <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <div>{{data.title}}</div>
+                            <div class="news-title">{{data.title}}</div>
                         </mat-panel-title>
                         <mat-panel-description>
                             <p class="news-date"> <mat-icon>date_range</mat-icon>{{data.pubDate | date:'longDate'}} - {{data.pubDate | date:'shortTime'}}</p>
                         </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <a href="{{data.link}}" target="_blank">{{data.link}}</a>
-                        <p class="news-author"><mat-icon>person</mat-icon>{{data.source.$.url}}</p>
+                        <div>
+                            <div>{{'feed.open' | translate}}</div>
+                            <div [innerHTML]=data.description></div>
+                            <p class="news-author"><mat-icon>person</mat-icon>{{data.source.$.url}}</p>
+                        </div>
                     </mat-expansion-panel>
                 </ng-container>
             </div>
             
         </div>
-        <div class="right-news">
+        <!--div class="right-news">
             <div class="news-content">
                 <mat-card class="info-card world-data-value-card">
                     <mat-card-header>
@@ -52,7 +72,7 @@
                 </mat-card>
             </div>
             
-        </div>
+        </div-->
      </div>
 
  </ng-container>

@@ -49,9 +49,16 @@ export class TravelfeedComponent implements OnInit {
     this.apiService.getNewsDataGoogle(input, lang).subscribe(
       (res: any) => {
         this.lastDataRetrieve = formatDate(new Date(), 'dd/MM/y-HH:m:s', 'en');
-        this.dataNews = res;
+        this.dataNews = this._sortData(res);
+        console.log(this.dataNews)
         this.loaderService.hideLoader();
       }
     );
+  }
+
+  private _sortData(data) {
+    return data.sort((a, b) => {
+      return <any>new Date(b.pubDate) - <any>new Date(a.pubDate);
+    });
   }
 }
