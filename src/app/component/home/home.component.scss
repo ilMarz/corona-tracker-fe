@@ -92,8 +92,12 @@
 }
 
 .country-flag {
-    position: absolute;
+    position: relative;
     right: 20px;
+    img {    
+        width: 20%;
+        float: right;
+    }
 }
 
 .last-update {
