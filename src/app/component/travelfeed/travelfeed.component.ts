@@ -36,7 +36,6 @@ export class TravelfeedComponent implements OnInit {
 
   ngOnInit(): void {
     //this._getFromLSOrExecuteRequest();
-    //this._getYahooNewsData("coronavirus");
     this._getGoogleNewsData("coronavirus", this.selectedNewsLang);
   }
 

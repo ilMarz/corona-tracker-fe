@@ -21,7 +21,6 @@ export class ApiService {
   getTotalApiBaseUrlWorlMeter = environment.totalWorldMeterApiBaseUrl;
   getAllCountriesApiBaseUrlWorlMeter = environment.allCountriesWorldMeterApiBaseUrl;
   googleUrl = environment.news.google;
-  yahooUrl = environment.news.yahoo;
 
   constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router) { }
 
@@ -77,16 +76,6 @@ getNewsDataGoogle(input, lang): Observable<any> {
     );
 }
 
-getYahooNews(input): Observable<any> {
-  return this.http.get(this._getYahooUrl(input), { responseType: 'text' })
-    .pipe(
-      switchMap(async result => 
-        await this._parseXmlToJson(result)
-      ),
-      catchError(this.handleError<any>('getYahooNews', []))
-    );
-}
-
 
 private _getAllCountriesApiBaseUrl(){
   if (environment.mockEnv) {
@@ -118,14 +107,6 @@ private _getGoogleNewsUrl(input, lang){
   input = input ? input : "world"
   lang = lang ? lang : "us";
   return this.googleUrl.replace(this.keySearch, input).replace(this.keyLang, lang);
-}
-
-private _getYahooUrl(input){
-  if (environment.mockEnv) {
-    return  '../assets/mock/yahoo.json';
-  }
-  input = input ? input : "world"
-  return this.yahooUrl.replace(this.keySearch, input);
 }
 
 async _parseXmlToJson(xml) {

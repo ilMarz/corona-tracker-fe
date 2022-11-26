@@ -47,15 +47,8 @@ import { ErrorComponent } from './component/error/error.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient} from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TravelfeedComponent } from './component/travelfeed/travelfeed.component';
-import { NgnewsModule } from 'angular-news-api';
-import { NewsApiKeyConfig } from 'angular-news-api';
-import { environment } from 'src/environments/environment';
 import { SanitizeHtmlPipe } from './pipe/sanitize-html.pipe';
- 
-const newsApiConfig: NewsApiKeyConfig = {
-  key: environment.news.key.newsapi
-};
+import { TravelfeedComponent } from './component/travelfeed/travelfeed.component';
 
 registerLocaleData(localeEn);
 
@@ -74,7 +67,6 @@ registerLocaleData(localeEn);
     RouterModule.forRoot([], {
       initialNavigation: 'enabled',
     }),    
-    NgnewsModule.forRoot(newsApiConfig),
     HttpClientModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
