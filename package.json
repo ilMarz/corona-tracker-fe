@@ -35,7 +35,6 @@
     "@nguniversal/express-engine": "^15.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
-    "angular-news-api": "0.0.7",
     "express": "^4.18.2",
     "google-news-json": "^2.1.0",
     "http-proxy": "^1.18.1",
@@ -48,7 +47,7 @@
     "stream": "0.0.2",
     "timers": "^0.1.1",
     "tslib": "^2.4.1",
-    "typescript": "~4.9.3",
+    "typescript": "~4.8.4",
     "xml2js": "^0.4.23",
     "zone.js": "~0.12.0"
   },
@@ -70,6 +69,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~10.9.1",
     "tslint": "~6.1.0",
-    "typescript": "~4.9.3"
+    "typescript": "~4.8.4"
   }
 }
