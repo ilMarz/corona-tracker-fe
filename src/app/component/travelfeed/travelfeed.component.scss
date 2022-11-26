@@ -1,5 +1,8 @@
 .container-flex {
     display: flex;
+    height: 100%;
+    position: relative;
+    top: 10%;
 }
 
 .left-news {
@@ -11,11 +14,11 @@
 }
 
 .news-content {
-    padding: 5%;
+    //padding: 5%;
     mat-expansion-panel {
         margin: 2%;
     }
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .news-date {
@@ -25,7 +28,10 @@
 }
 
 .lastDataRetrieve {
-    float: right;
+    //float: right;
+    font-size: small;
+    font-style: italic;
+    font-weight: 100;
 }
 
 .news-author{
@@ -34,8 +40,7 @@
 }
 
 .search-form-field {
-    background: white;
-    width: 100%;
+    
 }
 
 .news-title {
@@ -50,26 +55,40 @@
 
 .search-select {
     width: 10%;
+    img {
+        margin-right: 10%;
+    }
 }
 
 .search-text {
-    width: 100%;
+    //width: 100%;
+    text-align: center;
 }
 
 .news-toolbar {
     justify-content: center;
     position: fixed;
     z-index: 10;
+    .news-title {
+        display: grid;
+        span {
+            text-align: center;
+        }
+    }
 }
 
 .news-toolbar-radio {
     top: 4rem;
+    position: relative;
 }
 
 .toolbar-radio-news-content {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    div {
+        align-self: center;
+    }
 }
 
 
@@ -80,7 +99,7 @@
 
 @media only screen and (max-width: 880px) {
     .news-toolbar-radio {
-        top: unset;
-        bottom: 2rem;
+        //top: unset;
+        //bottom: 2rem;
     }
 }

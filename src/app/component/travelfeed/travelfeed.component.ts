@@ -44,13 +44,17 @@ export class TravelfeedComponent implements OnInit {
     this._getGoogleNewsData("coronavirus", this.selectedNewsLang);
   }
 
+  getLanguageFlag(currentLang: string) {
+    return "/assets/i18n/img/"+currentLang+".png";
+  }
+
   private _getGoogleNewsData(input, lang) {
     this.loaderService.showLoader();
     this.apiService.getNewsDataGoogle(input, lang).subscribe(
       (res: any) => {
         this.lastDataRetrieve = formatDate(new Date(), 'dd/MM/y-HH:m:s', 'en');
         this.dataNews = this._sortData(res);
-        console.log(this.dataNews)
+        //console.log(this.dataNews)
         this.loaderService.hideLoader();
       }
     );
