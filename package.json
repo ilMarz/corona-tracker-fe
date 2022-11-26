@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod",
+    "postinstall": "ng build --aot --configuration production",
     "dev:ssr": "ng run corona-tracker-fe:serve-ssr",
     "serve:ssr": "node dist/corona-tracker-fe/server/main.js",
     "build:ssr": "ng build --prod && ng run corona-tracker-fe:server:production",

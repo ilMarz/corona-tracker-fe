@@ -65,7 +65,7 @@ registerLocaleData(localeEn);
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     RouterModule.forRoot([], {
-      initialNavigation: 'enabled',
+      initialNavigation: 'enabledNonBlocking',
     }),    
     HttpClientModule,
     BrowserAnimationsModule,
