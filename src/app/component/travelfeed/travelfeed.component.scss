@@ -108,4 +108,11 @@ mat-panel-title {
         //top: unset;
         //bottom: 2rem;
     }
+
+    .news-title {
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        width: 160px; 
+        white-space: nowrap;
+    }
 }
