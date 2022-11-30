@@ -1,6 +1,9 @@
 
  <ng-container *ngIf="showContent">
     <mat-toolbar class="toolbar news-toolbar">
+        <div>
+            <mat-icon>home</mat-icon> <a href="/home"> stats </a>
+        </div>
         <div class="news-title">
             <span>News</span>
             <span class="lastDataRetrieve">{{'feed.lastDataRetrieve' | translate}}: {{lastDataRetrieve}}</span>
@@ -8,15 +11,6 @@
     </mat-toolbar>
     <mat-toolbar class="toolbar-radio news-toolbar-radio">
         <div class="toolbar-radio-news-content">
-            <div>
-                <mat-icon>home</mat-icon> <a href="/home"> stats </a>
-            </div>
-            <div class="search-text">
-                <mat-form-field class="search-form-field">
-                    <mat-label>Search...</mat-label>
-                    <input matInput type="text" [(ngModel)]="newsSearchInput">                      
-                </mat-form-field>
-            </div>
             <div class="search-select">
                 <img [src]="getLanguageFlag(selectedNewsLang)" alt="image">
                 <mat-select matNativeControl [(ngModel)]="selectedNewsLang" name="car" (selectionChange)="doSomething($event)" placeholder="en">
@@ -24,6 +18,12 @@
                     {{lang.key}}
                     </mat-option>
                 </mat-select>  
+            </div>
+            <div class="search-text">
+                <mat-form-field class="search-form-field">
+                    <mat-label>Search...</mat-label>
+                    <input matInput type="text" [(ngModel)]="newsSearchInput">                      
+                </mat-form-field>
             </div>
         </div>
     </mat-toolbar>

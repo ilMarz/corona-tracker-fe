@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
         this.infoData = res;
         this._getTotalDataFromWorldMeter();
 
-        console.log(this.infoData);
+        //console.log(this.infoData);
       }
     );
   }
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
         this.showContent = this.infoData.length > 0;
         this.loaderService.hideLoader();
 
-        console.log(this.worldStats);
+        //console.log(this.worldStats);
       }
     );
   }
