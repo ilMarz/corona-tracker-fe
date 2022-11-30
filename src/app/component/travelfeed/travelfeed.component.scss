@@ -25,6 +25,8 @@
     width: 100%;
     text-align: end;
     margin-top: 5%;
+    align-self: start;
+
 }
 
 .lastDataRetrieve {
@@ -63,6 +65,10 @@
 .search-text {
     //width: 100%;
     text-align: center;
+}
+
+mat-panel-title {
+    flex-basis: max-content;
 }
 
 .news-toolbar {

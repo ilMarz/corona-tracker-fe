@@ -164,32 +164,36 @@
     }
 }
 
-.right-group {
-    //margin-left: auto;
-}
-
 
 .world-data-value-card {
     display: none;
 }
 
 @media only screen and (max-width: 620px) {
+
+    .site-title {
+        display: none;
+    }
     .container {
       margin-top:23em;
     }
 }
 
 @media only screen and (max-height: 300px) {
+    .site-title {
+        display: none;
+    }
+    
     .world-data-value {
         display: none;
     }
 
     .toolbar-radio {
-        top:  2rem;
+        top:  4rem;
     }
 
     .container {
-        margin-top: 7em;
+        margin-top: 9em;
     }
 
     .world-data-value-card {
@@ -207,11 +211,11 @@
     }
 
     .toolbar-radio {
-        top:  2rem;
+        top:  4rem;
     }
 
     .container {
-        margin-top: 6em;
+        margin-top: 9em;
     }
 
     .world-data-value-card {

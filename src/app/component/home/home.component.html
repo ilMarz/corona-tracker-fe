@@ -4,7 +4,7 @@
         <mat-card class="title-card">
             <mat-card-content>
                 <ng-container>
-                    <div>{{'worldStats' | translate | uppercase }}
+                    <div class="site-title">{{'worldStats' | translate | uppercase }}
                         <ng-container *ngIf="infoData[0]">- {{'lastUpdate' | translate }}: {{worldStats.updated | date:'medium'}}
                         </ng-container>
                     </div>
