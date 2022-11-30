@@ -49,6 +49,7 @@ import { HttpClient} from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SanitizeHtmlPipe } from './pipe/sanitize-html.pipe';
 import { TravelfeedComponent } from './component/travelfeed/travelfeed.component';
+import { ValueRenderingPipe } from './pipe/value-rendering.pipe';
 
 registerLocaleData(localeEn);
 
@@ -59,7 +60,8 @@ registerLocaleData(localeEn);
     InfoPipePipe,
     ErrorComponent,
     TravelfeedComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    ValueRenderingPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

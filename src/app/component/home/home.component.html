@@ -35,11 +35,12 @@
             <mat-card class="world-data-value data-value" *ngIf="isAllowedColumn(item.key)">
                 <mat-card-header>
                     <mat-card-title [ngClass]="getFontColor(item.key)">
-                        {{item.key | translate | uppercase}}
+                        <div class="data-value-label data-value-label-header">{{item.key | translate | uppercase}}</div>
                     </mat-card-title>
                 </mat-card-header>
-                <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                    <b>{{item.value ? (item.value | number:'':'it') : 'N/A'}}</b>
+                <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)"
+                matTooltip="{{item.value | number: '':'it'}}">
+                    <b>{{item.value ? (item.value | valueRendering) : 'N/A'}}</b>
                 </mat-card-content>
             </mat-card>
         </ng-container>
@@ -92,11 +93,12 @@
         
 
         <mat-card class="info-card" *ngFor="let info of infoData | infoPipe:orderType | filter:textSearch; index as i">
-            <div class="country-flag"><img src={{info.countryInfo.flag}}></div>
+            <div class="index">#{{i+1}}</div>
             <mat-card-header>
-                <mat-card-title>#{{i+1}} {{info.country}} </mat-card-title>
+                <mat-card-title> {{info.country}} </mat-card-title>
 
                 <mat-card-subtitle class="font-color-white">{{info.continent}}</mat-card-subtitle>
+                <div class="country-flag"><img src={{info.countryInfo.flag}}></div>
             </mat-card-header>
             <mat-card-content class="info-card-value">
                 <ng-container *ngFor="let item of info | keyvalue">
@@ -106,8 +108,10 @@
                                 <div class="data-value-label">{{item.key | translate | uppercase }}</div>
                             </mat-card-title>
                         </mat-card-header>
-                        <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)">
-                            <b>{{item.value ? (item.value | number:'':'it') : 'N/A'}}</b>
+                        <mat-card-content class="data-value-content" [ngClass]="getFontColor(item.key)"
+                        matTooltip="{{item.value | number: '':'it'}}"
+                        >
+                            <b>{{item.value ? (item.value | valueRendering) : 'N/A'}}</b>
                         </mat-card-content>
                     </mat-card>
 
